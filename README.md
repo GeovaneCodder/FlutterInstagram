@@ -1,16 +1,18 @@
-# f_instagram
+## Instagram concept written on flutter.
 
-A new Flutter project.
+This concept was designed by [Veno](https://dribbble.com/WeAreVeno_PL "Veno") and published on [dribbble](https://dribbble.com/shots/6748642-Instagram-Redesign-Concept-Mobile-ver "dribbble").
+This project is being developed only for the study of the flutter.
 
-## Getting Started
+how to install:
 
-This project is a starting point for a Flutter application.
+Clone the project
+`git clone https://github.com/GeovaneCodder/FlutterInstagram.git`
 
-A few resources to get you started if this is your first Flutter project:
+Go to project directory
+`cd FlutterInstagram`
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Download the dependencies
+`flutter pub get`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+And run the project on your prefer simulator.
+`flutter run`
