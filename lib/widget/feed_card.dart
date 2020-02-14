@@ -1,3 +1,5 @@
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -7,8 +9,8 @@ class FeedCard extends StatefulWidget {
 }
 
 class _FeedCardState extends State<FeedCard> {
+  final FlareControls flareControls = FlareControls();
   bool _like = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,6 +62,7 @@ class _FeedCardState extends State<FeedCard> {
             child: InkWell(
               onDoubleTap: () => setState(() {
                 _like = !_like;
+                flareControls.play("like");
               }),
               child: Stack(
                 children: <Widget>[
@@ -73,13 +76,13 @@ class _FeedCardState extends State<FeedCard> {
                     ),
                   ),
                   Center(
-                    child: AnimatedOpacity(
-                      opacity: _like ? 0.5 : 0.0,
-                      duration: Duration(milliseconds: 500),
-                      child: Icon(
-                        Icons.favorite,
-                        size: 100,
-                        color: Colors.white,
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      child: FlareActor(
+                        'assets/instagram_like.flr',
+                        controller: flareControls,
+                        animation: 'idle',
                       ),
                     ),
                   ),
@@ -98,14 +101,18 @@ class _FeedCardState extends State<FeedCard> {
                       InkWell(
                         onTap: () => setState(() {
                           _like = !_like;
+                          flareControls.play("like");
                         }),
                         child: Icon(
-                            _like ? Icons.favorite : Icons.favorite_border,
-                            color: Colors.red),
+                          _like ? Icons.favorite : Icons.favorite_border,
+                          color: _like ? Colors.red : Colors.black,
+                        ),
                       ),
                       SizedBox(width: 5),
-                      Text("1,242",
-                          style: TextStyle(fontWeight: FontWeight.w600)),
+                      Text(
+                        "1,242",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
                   SizedBox(width: 20),
@@ -113,7 +120,10 @@ class _FeedCardState extends State<FeedCard> {
                     children: <Widget>[
                       Icon(FontAwesomeIcons.comment),
                       SizedBox(width: 5),
-                      Text("24", style: TextStyle(fontWeight: FontWeight.w600)),
+                      Text(
+                        "24",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ],
                   )
                 ],
@@ -136,8 +146,8 @@ class FeedList extends StatelessWidget {
         runSpacing: 15,
         children: <Widget>[
           FeedCard(),
-          FeedCard(),
-          FeedCard(),
+          // FeedCard(),
+          // FeedCard(),
         ],
       ),
     );
