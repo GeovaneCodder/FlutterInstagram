@@ -16,14 +16,14 @@ class BottomBarButton extends StatelessWidget {
           shape: BoxShape.circle,
           gradient: LinearGradient(
             colors: [
-              Colors.teal,
-              Colors.teal[200],
+              Colors.redAccent[400],
+              Colors.orangeAccent[200],
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topRight,
+            end: Alignment.bottomCenter,
           ),
         ),
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: Colors.white, size: 35),
       ),
     );
   }

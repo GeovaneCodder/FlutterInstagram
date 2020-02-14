@@ -51,7 +51,7 @@ class _FeedCardState extends State<FeedCard> {
                   onPressed: () => print('Feed More'),
                   icon: Icon(
                     Icons.more_horiz,
-                    color: Colors.grey[100],
+                    color: Colors.grey[300],
                   ),
                 ),
               ],
