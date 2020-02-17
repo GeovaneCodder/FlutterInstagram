@@ -146,8 +146,8 @@ class FeedList extends StatelessWidget {
         runSpacing: 15,
         children: <Widget>[
           FeedCard(),
-          // FeedCard(),
-          // FeedCard(),
+          FeedCard(),
+          FeedCard(),
         ],
       ),
     );

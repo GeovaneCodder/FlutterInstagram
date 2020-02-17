@@ -10,25 +10,40 @@ class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
   Animation gap;
   Animation base;
   Animation reverse;
-  AnimationController controller;
+  AnimationController _storieController;
 
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 4));
-    base = CurvedAnimation(parent: controller, curve: Curves.easeOut);
-    reverse = Tween<double>(begin: 0.0, end: -1.0).animate(base);
-    gap = Tween<double>(begin: 3.0, end: 0.0).animate(base)
+
+    _storieController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 10),
+    );
+
+    base = CurvedAnimation(
+      parent: _storieController,
+      curve: Curves.easeOut,
+    );
+
+    reverse = Tween<double>(
+      begin: 0.0,
+      end: -1.0,
+    ).animate(base);
+
+    gap = Tween<double>(
+      begin: 3.0,
+      end: 0.0,
+    ).animate(base)
       ..addListener(() {
         setState(() {});
       });
-    controller.forward();
+    _storieController.forward();
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    _storieController.dispose();
     super.dispose();
   }
 

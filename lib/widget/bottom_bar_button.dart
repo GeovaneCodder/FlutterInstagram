@@ -6,11 +6,6 @@ class BottomBarButton extends StatelessWidget {
     return Container(
       width: 80,
       height: 80,
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-      ),
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,

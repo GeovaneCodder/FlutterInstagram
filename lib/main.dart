@@ -1,3 +1,4 @@
+import 'package:FlutterInstagram/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,31 +21,30 @@ class Instagram extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.white,
-      home: Main(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Feed(),
+        '/profile': (context) => Profile(),
+      },
     );
   }
 }
 
-class Main extends StatelessWidget {
+class Feed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _portraitModeOnly();
 
     return Scaffold(
       appBar: TopBar(),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              StorieList(),
-              FeedList(),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            StorieList(),
+            FeedList(),
+          ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: BottomBarButton(),
       bottomNavigationBar: BottomBar(),
     );
   }
