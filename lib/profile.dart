@@ -209,6 +209,20 @@ class _ProfileState extends State<Profile> {
     );
   }
 
+  Widget _latest() {
+    return Container(
+      width: MediaQuery.of(context).size.width / 2.3,
+      height: MediaQuery.of(context).size.width / 2.3,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: DecorationImage(
+          fit: BoxFit.fill,
+          image: NetworkImage('https://picsum.photos/400/400'),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -217,6 +231,19 @@ class _ProfileState extends State<Profile> {
         child: Column(
           children: <Widget>[
             _informations(),
+            SizedBox(height: 15),
+            Wrap(
+              spacing: 15, // gap between adjacent chips
+              runSpacing: 15,
+              children: <Widget>[
+                _latest(),
+                _latest(),
+                _latest(),
+                _latest(),
+                _latest(),
+                _latest(),
+              ],
+            ),
           ],
         ),
       ),
