@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'widget/bottom_bar.dart';
 
 class ProfileTopBar extends StatelessWidget with PreferredSizeWidget {
@@ -210,21 +208,31 @@ class _ProfileState extends State<Profile> {
   }
 
   Widget _latest() {
-    return Container(
-      width: MediaQuery.of(context).size.width / 2.3,
-      height: MediaQuery.of(context).size.width / 2.3,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: NetworkImage('https://picsum.photos/400/400'),
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, '/publication-detail'),
+      child: Hero(
+        child: Container(
+          width: MediaQuery.of(context).size.width / 2.3,
+          height: MediaQuery.of(context).size.width / 2.3,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: NetworkImage('https://picsum.photos/400/400'),
+            ),
+          ),
         ),
+        tag: 'geteste',
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    // final appModel = Provider.of<AppModel>(context);
+
+    // print(appModel.getTheme());
+
     return Scaffold(
       appBar: ProfileTopBar(),
       body: SingleChildScrollView(
@@ -237,11 +245,11 @@ class _ProfileState extends State<Profile> {
               runSpacing: 15,
               children: <Widget>[
                 _latest(),
-                _latest(),
-                _latest(),
-                _latest(),
-                _latest(),
-                _latest(),
+                // _latest(),
+                // _latest(),
+                // _latest(),
+                // _latest(),
+                // _latest(),
               ],
             ),
           ],

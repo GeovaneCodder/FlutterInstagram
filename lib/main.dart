@@ -1,20 +1,19 @@
+import 'package:FlutterInstagram/create_media.dart';
 import 'package:FlutterInstagram/profile.dart';
+import 'package:FlutterInstagram/publication_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'widget/bottom_bar_button.dart';
-import 'widget/bottom_bar.dart';
-import 'widget/feed_card.dart';
-import 'widget/storie_list.dart';
-import 'widget/top_bar.dart';
+import 'feed.dart';
 
-void main() => runApp(Instagram());
-
-void _portraitModeOnly() {
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  runApp(Instagram());
 }
 
 class Instagram extends StatelessWidget {
@@ -24,28 +23,16 @@ class Instagram extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Feed(),
+        '/createmedia': (context) => CreateMedia(),
         '/profile': (context) => Profile(),
+        '/publication-detail': (context) => PublicationDetail(),
       },
-    );
-  }
-}
-
-class Feed extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    _portraitModeOnly();
-
-    return Scaffold(
-      appBar: TopBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            StorieList(),
-            FeedList(),
-          ],
-        ),
+      theme: ThemeData(
+        brightness: Brightness.light,
       ),
-      bottomNavigationBar: BottomBar(),
+      // darkTheme: ThemeData(
+      //   brightness: Brightness.dark,
+      // ),
     );
   }
 }

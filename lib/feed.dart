@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'widget/bottom_bar.dart';
+import 'widget/feed_card.dart';
+import 'widget/storie_list.dart';
+
 class TopBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(70);
@@ -52,6 +56,30 @@ class TopBar extends StatelessWidget with PreferredSizeWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Feed extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // final appModel = Provider.of<AppModel>(context);
+
+    // if (MediaQuery.of(context).platformBrightness == Brightness.dark) {
+    //   appModel.setDark(true);
+    // }
+
+    return Scaffold(
+      appBar: TopBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            StorieList(),
+            FeedList(),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

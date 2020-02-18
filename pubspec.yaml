@@ -22,6 +22,11 @@ dependencies:
   font_awesome_flutter:
   dashed_circle:
   flare_flutter:
+  provider:
+  camera:
+  path_provider:
+  path:
+  permission_handler:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

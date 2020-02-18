@@ -24,6 +24,14 @@ class BottomBarClipper extends CustomClipper<Path> {
 }
 
 class BottomBar extends StatelessWidget {
+  _navigationTo(BuildContext context, {String to}) {
+    if (to == 'back') {
+      Navigator.pop(context);
+    }
+
+    return Navigator.pushNamed(context, to);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -38,34 +46,41 @@ class BottomBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              Icon(Icons.home, size: 28),
+              GestureDetector(
+                onTap: () => _navigationTo(context, to: '/'),
+                child: Icon(Icons.home, size: 28),
+              ),
               Icon(Icons.search, size: 28),
-              Container(
-                width: 45,
-                height: 45,
-                margin: EdgeInsets.only(bottom: 30),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                      colors: [
-                        Colors.orange.shade400.withOpacity(.6),
-                        Colors.pink,
+              GestureDetector(
+                onTap: () => _navigationTo(context, to: '/createmedia'),
+                child: Container(
+                  width: 45,
+                  height: 45,
+                  margin: EdgeInsets.only(bottom: 30),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
+                        colors: [
+                          Colors.orange.shade400.withOpacity(.6),
+                          Colors.pink,
+                        ],
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color:
+                              Colors.deepOrangeAccent.shade100.withOpacity(.6),
+                          offset: Offset(0, 10),
+                          blurRadius: 20,
+                        )
                       ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.deepOrangeAccent.shade100.withOpacity(.6),
-                        offset: Offset(0, 10),
-                        blurRadius: 20,
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(25)),
-                child: Icon(Icons.add, color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(25)),
+                  child: Icon(Icons.add, color: Colors.grey.shade300),
+                ),
               ),
               Icon(Icons.favorite_border, size: 28),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, '/profile'),
+                onTap: () => _navigationTo(context, to: '/profile'),
                 child: Icon(Icons.perm_identity, size: 28),
               ),
             ],
